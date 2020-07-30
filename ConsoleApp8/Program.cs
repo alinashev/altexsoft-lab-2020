@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text.RegularExpressions;
 
 namespace Task1
 {
@@ -20,14 +21,14 @@ namespace Task1
             }
             
             string readText = File.ReadAllText(path);
-            try
+            string pattern = subString;
+            Regex regex = new Regex(pattern,  RegexOptions.IgnoreCase);
+            string createText = regex.Replace(readText, "");
+            File.WriteAllText(path, createText);
+            int result = String.Compare(readText, createText);
+            if (result == 0)
             {
-                string createText = readText.ToLower().Replace(subString, "");
-                File.WriteAllText(path, createText);
-            }
-            catch
-            {
-                Console.WriteLine("Такой подстроки нету!");
+                Console.WriteLine("Такой подстроки нет!");
             }
             
         }
@@ -35,8 +36,13 @@ namespace Task1
         static void  AmountAndWords(string path)
         {
             string readText = File.ReadAllText(path);
-            string[] words = readText.Split(new char[] {' ','"', '.', '?', '!', ',' , '(', ')'}, StringSplitOptions.RemoveEmptyEntries);
+            Regex regex = new Regex(@"[^a-zA-Z0-9'\s]+", RegexOptions.Compiled);
+            readText = regex.Replace(readText, "");
+            Regex regexPattern = new Regex(@"[^a-zA-Z0-9'\S+]+", RegexOptions.Compiled);
+            string[] words = regexPattern.Split(readText);
+            
             Console.WriteLine("Количество слов:" + words.Length);
+            
             List<string> resultWords = new List<string>();
             string word;
             for (int i = 9; i < words.Length; i += 10 )
