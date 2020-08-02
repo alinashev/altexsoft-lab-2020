@@ -27,7 +27,7 @@ namespace Task1
         public void RemoveWord()
         {
             string subString = Console.ReadLine();
-            if (model.WordRemover(GetPath(),subString) == 0)
+            if (model.GetModelRemover().WordRemover(GetPath(),subString) == 0)
             {
                 view.NoSubstring();
             }
@@ -40,7 +40,7 @@ namespace Task1
 
         public void MoveDirectory()
         {
-            model.DirectoryProcessing(pathToFile);
+            model.GetMeodelDirectory().DirectoryProcessing(pathToFile);
         }
     }
 }

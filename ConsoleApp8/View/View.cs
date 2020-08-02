@@ -21,7 +21,6 @@ namespace Task1
         {
             Console.WriteLine("1 - Вызвать метод 1\n2 - Вызвать метод 2\n3 - Вызвать метод 3\n4 - Вызвать метод 4");
             router.Select();
-            
         }
 
         public void WrongInput()
@@ -43,11 +42,11 @@ namespace Task1
 
         public void Amount()
         {
-            Console.WriteLine(String.Join(',', controller.GetModel().AmountAndWords(controller.GetPath())));
+            Console.WriteLine(String.Join(',', controller.GetModel().GetModelAmount().AmountAndWords(controller.GetPath())));
         }
         public void SentencePrinter()
         {
-            Console.WriteLine(String.Join(' ', controller.GetModel().PrintSentance(controller.GetPath())));
+            Console.WriteLine(String.Join(' ', controller.GetModel().GetModelSentance().PrintSentance(controller.GetPath())));
         }
         public void NoSubstring()
         {
