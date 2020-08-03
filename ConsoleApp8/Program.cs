@@ -4,17 +4,10 @@
     {
         public static void Main(string[] args)
         {
-            Controller controller = new Controller();
-            View view = new View();
-            Model model = new Model();
-            Router router = new Router();
-            router.setView(view);
-            router.SetController(controller);
+            Input input = new Input();
+            Router router = new Router(input);
             router.GenerateMenu();
-            controller.SetModel(model);
-            view.SetController(controller);
-            view.SetRouter(router);
-            view.PrintMenu();
+            router.Select();
         }
     }
 }
