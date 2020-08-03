@@ -1,13 +1,12 @@
-﻿namespace Task1
+﻿using System;
+
+namespace ConsoleApp8
 {
     class Program
     {
-        public static void Main(string[] args)
+        static void Main(string[] args)
         {
-            Input input = new Input();
-            Router router = new Router(input);
-            router.GenerateMenu();
-            router.Select();
+            Console.WriteLine("Hello World!");
         }
     }
 }
