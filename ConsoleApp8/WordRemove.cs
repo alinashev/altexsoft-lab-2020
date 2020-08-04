@@ -8,23 +8,32 @@ namespace Task1
     {
         public void ToDo(string path)
         {
-            Console.WriteLine("Подстрока, которую нужно вырезать:");
-            string subString = Console.ReadLine();
             string newPath = @"" + path.Replace(".", "copy.");
+            string readText;
+            string pattern;
+            
             FileInfo fileInf = new FileInfo(path);
             if (fileInf.Exists)
             {
-                fileInf.CopyTo(newPath, true);
+                Console.WriteLine("Подстрока, которую нужно вырезать:");
+                string subString = Console.ReadLine();
+                readText = File.ReadAllText(path);
+                if (readText.Contains(subString))
+                {
+                    fileInf.CopyTo(newPath, true);
+                    pattern = subString;
+                    Regex regex = new Regex(pattern,  RegexOptions.IgnoreCase);
+                    string createText = regex.Replace(readText, "");
+                    File.WriteAllText(path, createText);
+                }
+                else
+                {
+                    Console.WriteLine("Такой подстроки нет!");
+                }
             }
-            string readText = File.ReadAllText(path);
-            string pattern = subString;
-            Regex regex = new Regex(pattern,  RegexOptions.IgnoreCase);
-            string createText = regex.Replace(readText, "");
-            File.WriteAllText(path, createText);
-            int result = String.Compare(readText, createText);
-            if (result == 0)
+            else
             {
-                Console.WriteLine("Такой подстроки нет!");
+                Console.WriteLine("Такого файла не существует!");
             }
         }
     }

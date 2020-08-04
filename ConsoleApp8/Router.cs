@@ -24,7 +24,7 @@ namespace Task1
         {
             Console.WriteLine("1 - Вызвать метод 1\n2 - Вызвать метод 2\n3 - Вызвать метод 3\n4 - Вызвать метод 4");
             int number = Int32.Parse(Console.ReadLine());
-            if (number > 0 & number <= menu.Count)
+            if (number > 0 && number <= menu.Count)
             {
                 menu[number].ToDo(input.InputPath());
             }

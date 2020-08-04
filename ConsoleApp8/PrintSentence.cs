@@ -9,18 +9,35 @@ namespace Task1
     {
         public void ToDo(string path)
         {
-            string readText = File.ReadAllText(path);
-            string[] sentences = readText.Split(new char[] {'.'}, StringSplitOptions.RemoveEmptyEntries);
-            string senrence = sentences[2];
-            string[] words = senrence.Split(new char[] {' '}, StringSplitOptions.RemoveEmptyEntries);
-            string word;
-            List<string> reverseWords = new List<string>();
-            for (int i = 0; i < words.Length; i++)
+            string readText;
+            FileInfo fileInf = new FileInfo(path);
+            if (fileInf.Exists)
             {
-                word = words[i];
-                reverseWords.Add(new string(word.ToCharArray().Reverse().ToArray()));
+                readText = File.ReadAllText(path);
+                string[] sentences = readText.Split(new char[] {'.'}, StringSplitOptions.RemoveEmptyEntries);
+                if (sentences.Length >= 3)
+                {
+                    string senrence = sentences[2];
+                    string[] words = senrence.Split(new char[] {' '}, StringSplitOptions.RemoveEmptyEntries);
+                    string word;
+                    List<string> reverseWords = new List<string>();
+                    for (int i = 0; i < words.Length; i++)
+                    {
+                        word = words[i];
+                        reverseWords.Add(new string(word.ToCharArray().Reverse().ToArray()));
+                    }
+
+                    Console.WriteLine(String.Join(' ', reverseWords));
+                }
+                else
+                {
+                    Console.WriteLine("Такого предложения нет!");
+                }
             }
-            Console.WriteLine(String.Join(' ', reverseWords));
+            else
+            {
+                Console.WriteLine("Такого файла не существует!");
+            }
         }
     }
 }
