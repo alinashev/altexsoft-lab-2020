@@ -4,7 +4,7 @@ using System.Text.RegularExpressions;
 
 namespace Task1
 {
-    public class WordRemover : IAction
+    public class WordRemover : FileChecker,IAction
     {
         public void ToDo(string path)
         {
@@ -12,9 +12,9 @@ namespace Task1
             string readText;
             string pattern;
             
-            FileInfo fileInf = new FileInfo(path);
-            if (fileInf.Exists)
+            if (base.IsFileExists(path))
             {
+                FileInfo fileInf = new FileInfo(path);
                 Console.WriteLine("Подстрока, которую нужно вырезать:");
                 string subString = Console.ReadLine();
                 readText = File.ReadAllText(path);
@@ -30,10 +30,6 @@ namespace Task1
                 {
                     Console.WriteLine("Такой подстроки нет!");
                 }
-            }
-            else
-            {
-                Console.WriteLine("Такого файла не существует!");
             }
         }
     }

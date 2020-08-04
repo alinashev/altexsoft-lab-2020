@@ -5,13 +5,12 @@ using System.Linq;
 
 namespace Task1
 {
-    public class PrintSentance : IAction
+    public class PrintSentance : FileChecker,IAction
     {
         public void ToDo(string path)
         {
             string readText;
-            FileInfo fileInf = new FileInfo(path);
-            if (fileInf.Exists)
+            if (base.IsFileExists(path))
             {
                 readText = File.ReadAllText(path);
                 string[] sentences = readText.Split(new char[] {'.'}, StringSplitOptions.RemoveEmptyEntries);
@@ -33,10 +32,6 @@ namespace Task1
                 {
                     Console.WriteLine("Такого предложения нет!");
                 }
-            }
-            else
-            {
-                Console.WriteLine("Такого файла не существует!");
             }
         }
     }

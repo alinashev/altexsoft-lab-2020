@@ -16,6 +16,8 @@ namespace Task1
                 {
                     string[] dirs = Directory.GetDirectories(directoryName);
                     string[] fls = Directory.GetFiles(directoryName);
+                    Array.Sort(dirs);
+                    Array.Sort(fls);
                     dirеctory.Clear();
                         
                     for (int i = 0; i < dirs.Length; i++)

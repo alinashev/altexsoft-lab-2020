@@ -5,13 +5,13 @@ using System.Text.RegularExpressions;
 
 namespace Task1
 {
-    public class AmountAndWords : IAction
+    public class AmountAndWords : FileChecker,IAction
     {
         public void ToDo(string path)
         {
             string readText;
-            FileInfo fileInf = new FileInfo(path);
-            if (fileInf.Exists)
+            
+            if (base.IsFileExists(path))
             { 
                 readText = File.ReadAllText(path);
                 Regex regex = new Regex(@"[^a-zA-Z0-9'\s]+", RegexOptions.Compiled);
@@ -29,10 +29,6 @@ namespace Task1
                     resultWords.Add(word);
                 }
                 Console.WriteLine(String.Join(',', resultWords));
-            }
-            else
-            {
-                Console.WriteLine("Такого файла не существует!");
             }
         }
     }
