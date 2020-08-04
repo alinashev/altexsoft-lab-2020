@@ -19,8 +19,7 @@ namespace Task1
                 if (readText.Contains(subString))
                 {
                     fileInf.CopyTo(newPath, true);
-                    string pattern = subString;
-                    Regex regex = new Regex(pattern,  RegexOptions.IgnoreCase);
+                    Regex regex = new Regex(subString,  RegexOptions.IgnoreCase);
                     string createText = regex.Replace(readText, "");
                     File.WriteAllText(path, createText);
                 }

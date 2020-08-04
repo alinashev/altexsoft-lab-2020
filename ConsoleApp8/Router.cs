@@ -14,9 +14,9 @@ namespace Task1
         }
         public void GenerateMenu()
         {
-            menu.Add(1, new WordRemover());
+            menu.Add(1, new WordRemove());
             menu.Add(2, new AmountAndWords());
-            menu.Add(3, new PrintSentance());
+            menu.Add(3, new PrintSentence());
             menu.Add(4, new DirectoryProcessing());
         }
 
