@@ -1,7 +1,7 @@
 **/.idea/**/*.iml
 **/.idea/**/contentModel.xml
 **/.idea/**/modules.xml
-
+.idea/.idea.App.dir/.idea/*.xml
 *.suo
 *.user
 .vs/
