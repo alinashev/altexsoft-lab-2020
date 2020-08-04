@@ -5,15 +5,13 @@ using System.Linq;
 
 namespace Task1
 {
-    public class PrintSentance : FileChecker,IAction
+    public class PrintSentence : FileChecker,IAction
     {
         public void ToDo(string path)
         {
-            string readText;
             if (base.IsFileExists(path))
             {
-                readText = File.ReadAllText(path);
-                string[] sentences = readText.Split(new char[] {'.'}, StringSplitOptions.RemoveEmptyEntries);
+                string[] sentences = File.ReadAllText(path).Split(new char[] {'.'}, StringSplitOptions.RemoveEmptyEntries);
                 if (sentences.Length >= 3)
                 {
                     string senrence = sentences[2];

@@ -9,13 +9,10 @@ namespace Task1
     {
         public void ToDo(string path)
         {
-            string readText;
-            
             if (base.IsFileExists(path))
-            { 
-                readText = File.ReadAllText(path);
+            {
                 Regex regex = new Regex(@"[^a-zA-Z0-9'\s]+", RegexOptions.Compiled);
-                readText = regex.Replace(readText, "");
+                string readText = regex.Replace(File.ReadAllText(path), "");
                 Regex regexPattern = new Regex(@"[^a-zA-Z0-9'\S+]+", RegexOptions.Compiled);
                 string[] words = regexPattern.Split(readText);
 
