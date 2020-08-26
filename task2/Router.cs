@@ -5,20 +5,19 @@ namespace Task2App
 {
     public class Router
     {
-        private Dictionary<Int32, IAction> menu = new Dictionary<Int32, IAction>();
+        private Dictionary<int, IAction> menu = new Dictionary<int, IAction>();
         public void GenerateDictionary()
         {
-            menu.Add(1, new MoveCategory());
-            menu.Add(2, new MoveShowAllIngredients());
+            menu.Add(1, new Navigation());
+            menu.Add(2, new MoveAddRecipe());
         }
-
         public void Selection()
         {
-            Console.WriteLine("1. Категории\n2. Все ингредиенты");
-            int select = Int32.Parse(Console.ReadLine());
+            Console.WriteLine("1. View recipe book \n2. Add new recipe");
+            int select = int.Parse(Console.ReadLine());
             if (select > 0 && select <= menu.Count)
             {
-                menu[select].ToDo();
+                menu[select].ToDo( @"Book\");
             }
             else
             {

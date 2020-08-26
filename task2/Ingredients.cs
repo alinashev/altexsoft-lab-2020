@@ -1,34 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
-using Newtonsoft.Json.Linq;
+using Newtonsoft.Json;
 
 namespace Task2App
 {
-    public class Ingredients: Folder, IJsonToDictionary
+    public class Ingredient : IJsonEditor
     {
-        private string _jsonString;
-        private Dictionary<string, Double> dictIngredients = new Dictionary<string, Double>();
-
-       public Ingredients()
+        public  Dictionary <string, string> Ingredients { get; set; } = new Dictionary<string, string>();
+        public void Serialize(string path, object json)
         {
-            _jsonString = File.ReadAllText( base.GetPathFolder() + "AllIngredient.json");
-        }
-
-        public Dictionary<string, Double> GetDictIngredients()
-        {
-            return dictIngredients;
-        }
-
-        public void JsonToDictionary()
-        {
-            JObject jsonObj = JObject.Parse(_jsonString);
-            dictIngredients = jsonObj.ToObject<Dictionary<string, Double>>();
-        }
-
-        public void PrintDictionary()
-        {
-            Console.WriteLine(String.Join(' ',dictIngredients));
+            File.WriteAllText(path, JsonConvert.SerializeObject(json, Formatting.Indented));
         }
     }
 }
