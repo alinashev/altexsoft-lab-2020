@@ -9,7 +9,7 @@ namespace Task2App
         private string _description;
         private string _step;
         private string[] _pathBlocks;
-        private AllIngredients _allIngredients = new AllIngredients();
+        private UpdaterAllIngredients _allIngredients = new UpdaterAllIngredients();
         private Dictionary<string, string> dictIngredients = new Dictionary<string, string>();
         
         public NewRecipe(){}

@@ -5,7 +5,7 @@ using Newtonsoft.Json;
 
 namespace Task2App
 {
-    public class AllIngredients
+    public class UpdaterAllIngredients
     {
         private  FileWriter _fileWriter = new FileWriter();
         public void AddIngredientsToAllList(Dictionary<string, string> currentIngredients, string directoryPath)
