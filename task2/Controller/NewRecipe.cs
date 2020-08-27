@@ -1,9 +1,9 @@
-﻿using System;
+﻿﻿using System;
 using System.Collections.Generic;
 
 namespace Task2App
 {
-    public class NewRecipe
+   public class NewRecipe
     {
         private string _name;
         private string _description;
@@ -12,7 +12,6 @@ namespace Task2App
         private AllIngredients _allIngredients = new AllIngredients();
         private Dictionary<string, string> dictIngredients = new Dictionary<string, string>();
         
-
         public NewRecipe(){}
         public NewRecipe(string pathRecipe)
         {

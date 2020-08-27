@@ -1,4 +1,4 @@
-﻿using System.IO;
+﻿﻿using System.IO;
 
 namespace Task2App
 {
@@ -8,6 +8,7 @@ namespace Task2App
         private NewRecipe _newrecipe;
         private Recipe _recipe = new Recipe();
         private Ingredient _ingredient = new Ingredient();
+        private FileWriter _fileWriter = new FileWriter();
         private string path;
         
         public void ToDo(string directoryName)
@@ -19,10 +20,10 @@ namespace Task2App
                 _newrecipe = new NewRecipe(path);
                 _recipe.Description = _newrecipe.AddDescription();
                 _recipe.Steps = _newrecipe.AddStep();
-                _recipe.Serialize(path + @"\" + _pathRecipe.name + @".json", _recipe);
+                _fileWriter.Serialize(path + @"\" + _pathRecipe.name + @".json", _recipe);
 
-                _ingredient.Ingredients = _newrecipe.AddIngredients();
-                _ingredient.Serialize(path + @"\" + _pathRecipe.name + @"Ingredients.json", _ingredient);
+                _ingredient.dictionaryIngredients = _newrecipe.AddIngredients();
+                _fileWriter.Serialize(path + @"\" + _pathRecipe.name + @"Ingredients.json", _ingredient);
             }
         }
     }

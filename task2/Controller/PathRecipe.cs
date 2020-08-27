@@ -1,16 +1,16 @@
-﻿using System;
+﻿﻿using System;
 using System.Collections.Generic;
 using System.IO;
 
 namespace Task2App
 {
-    public class PathRecipe : IAction
+    public class PathRecipe
     {
         private NewRecipe _newrecipe = new NewRecipe();
         private string path;
         string choice;
         public string name;
-        Dictionary<int, string> dirеctory = new Dictionary<int, string>();
+        private Dictionary<int, string> dirеctory = new Dictionary<int, string>();
 
         public string GeneratePath(string directoryName)
         {
